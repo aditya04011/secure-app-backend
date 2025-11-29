@@ -32,21 +32,21 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., mobile apps, server-to-server requests)
+    // Allow requests from any origin
     if (!origin) return callback(null, true);
-
-    // Allow all origins
     return callback(null, true);
   },
-  credentials: true,  // Allow credentials to be sent
+  credentials: true, // Allow credentials to be sent
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  optionsSuccessStatus: 204,  // For legacy browser support
+  optionsSuccessStatus: 204, // For legacy browser support
 };
 
-// Apply CORS middleware
+// Apply CORS middleware for both preflight and actual requests
 app.use(cors(corsOptions));
 
-// app.options("*", cors(corsOptions));
+// Explicitly handle OPTIONS requests if needed
+app.options('*', cors(corsOptions));
+
 
 app.use("/queues", router);
 // Middleware setup
