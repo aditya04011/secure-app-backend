@@ -1,0 +1,10 @@
+{
+  "enabledModules": [
+    "enquiries",
+    "taskmanagement",
+    "branches",
+    "fees",
+    "courses",
+    "schools"
+  ]
+}

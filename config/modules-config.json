@@ -1,0 +1,5 @@
+{
+  "core": [],
+  "modules": [],
+  "enabledModules": ["common", "loggers"] 
+}

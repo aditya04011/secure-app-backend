@@ -1,0 +1,7 @@
+{
+  "name": "notifications",
+  "version": "1.0.0",
+  "description": "Handles notifications functionality",
+  "routes": ["/routes/notifications.routes.js"],
+  "dependencies": []
+}

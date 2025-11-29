@@ -1,0 +1,7 @@
+{
+  "name": "<modulename>",
+  "version": "1.0.0",
+  "description": "<Functionality of the module.>",
+  "routes": ["./routes/project.routes.js", "<paths of the routes>"],
+  "dependencies": ["<dependency model names>", "security"]
+}

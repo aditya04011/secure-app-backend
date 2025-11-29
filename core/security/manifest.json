@@ -1,0 +1,7 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "Handles authentication and authorization management functionality.",
+  "routes": [],
+  "dependencies": []
+}
