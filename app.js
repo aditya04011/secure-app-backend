@@ -19,31 +19,34 @@ console.warn("isHttpsEnabled",isHttpsEnabled)
  * 3. Elasticsearch, Redis, and BullQueue initialization.
  * 4. Module loading based on config.
  */
-if (isHttpsEnabled) {
-  const allowedOrigins = [
-    "https://localhost:3000",
-    "https://127.0.0.1:4005",
-    "https://localhost:4005",
-    "https://192.168.1.60:4005",
-    "https://122.175.19.236:4005"
-  ];
-  app.use(
-    cors({
-      origin: "*",
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE'],
-    })
-  );
-} else {
-  // During development, allow requests from any origin
-  app.use(
-    cors({
-      origin: "*",
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE'],
-    })
-  );
-}
+// Configure CORS to properly handle preflight requests and credentials.
+// Note: Access-Control-Allow-Origin cannot be '*' when credentials are used.
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "http://localhost:4005",
+      "https://localhost:3000",
+    ];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., mobile apps, server-to-server requests)
+    if (!origin) return callback(null, true);
+
+    // Allow all origins
+    return callback(null, true);
+  },
+  credentials: true,  // Allow credentials to be sent
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  optionsSuccessStatus: 204,  // For legacy browser support
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// app.options("*", cors(corsOptions));
 
 app.use("/queues", router);
 // Middleware setup
