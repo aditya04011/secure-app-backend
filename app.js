@@ -29,15 +29,9 @@ if (isHttpsEnabled) {
   ];
   app.use(
     cors({
-      origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-          callback(null, true); // Allow the request
-        } else {
-          callback(new Error("Not allowed by CORS"));
-        }
-      },
-      credentials: true, // Allow credentials (cookies, authorization headers)
-      methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE']
+      origin: "*",
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE'],
     })
   );
 } else {
