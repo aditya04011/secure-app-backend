@@ -86,19 +86,29 @@ router.post("/debug", (req, res) => {
 router.get("/reverse", async (req, res) => {
   const { lat, lon } = req.query;
 
-  try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
-      {
-        headers: {
-          "User-Agent": "YourAppName/1.0"
-        }
-      }
-    );
+  if (!lat || !lon) {
+    return res.status(400).json({ error: "Missing lat or lon query parameter" });
+  }
 
-    const data = await response.json();
-    res.json(data);
-  } catch (e) {
+  try {
+    const response = await axios.get("https://nominatim.openstreetmap.org/reverse", {
+      params: {
+        lat,
+        lon,
+        format: "json"
+      },
+      headers: {
+        "User-Agent": "YourAppName/1.0"
+      },
+      timeout: 10000 // optional, fail if response takes too long
+    });
+
+    // Only return the display_name to the client
+    const display_name = response.data?.display_name || null;
+
+    res.json(response);
+  } catch (error) {
+    console.error("Reverse geocoding error:", error.message || error);
     res.status(500).json({ error: "Reverse geocoding failed" });
   }
 });
