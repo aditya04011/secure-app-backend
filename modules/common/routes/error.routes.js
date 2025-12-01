@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import loggingService from "../../../services/logging.service.js";
+import axios from "axios";
 
 // const logger = loggingService.getModuleLogger("Client Error");
 
