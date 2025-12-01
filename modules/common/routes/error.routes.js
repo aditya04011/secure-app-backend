@@ -99,7 +99,7 @@ router.get("/reverse", async (req, res) => {
         format: "json"
       },
       headers: {
-        "User-Agent": "YourAppName/1.0"
+        "User-Agent": "YourAppName/1.0 (vamsiking62@gmail.com)" // Add a valid contact email
       },
       timeout: 10000 // optional, fail if response takes too long
     });
@@ -109,7 +109,7 @@ router.get("/reverse", async (req, res) => {
 
     res.json(response);
   } catch (error) {
-    console.error("Reverse geocoding error:", error.message || error);
+    console.error("Reverse geocoding error:", error.response || error.message || error);
     res.status(500).json({ error: "Reverse geocoding failed" });
   }
 });
