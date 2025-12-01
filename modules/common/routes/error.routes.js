@@ -91,23 +91,16 @@ router.get("/reverse", async (req, res) => {
     return res.status(400).json({ error: "Missing lat or lon query parameter" });
   }
 
+   const apiKey = 'a101d282cdfe43c884d0df76fb3f916e';
+   const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${apiKey}`;
   try {
-    const response = await axios.get("https://nominatim.openstreetmap.org/reverse", {
-      params: {
-        lat,
-        lon,
-        format: "json"
-      },
-      headers: {
-        "User-Agent": "YourAppName/1.0 (vamsiking62@gmail.com)" // Add a valid contact email
-      },
-      timeout: 10000 // optional, fail if response takes too long
-    });
+    const response = await axios.get(url);
+    console.log(response.data.results[0].formatted);
 
     // Only return the display_name to the client
     const display_name = response.data?.display_name || null;
 
-    res.json(response.data);
+    res.json(response.data.results[0].formatted);
   } catch (error) {
     console.error("Reverse geocoding error:", error.response || error.message || error);
     res.status(500).json({ error: "Reverse geocoding failed" });
