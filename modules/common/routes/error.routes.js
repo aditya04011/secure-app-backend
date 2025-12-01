@@ -83,6 +83,26 @@ router.post("/debug", (req, res) => {
   res.status(200).json({ message: "Debug logged successfully" });
 });
 
+router.get("/reverse", async (req, res) => {
+  const { lat, lon } = req.query;
+
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
+      {
+        headers: {
+          "User-Agent": "YourAppName/1.0"
+        }
+      }
+    );
+
+    const data = await response.json();
+    res.json(data);
+  } catch (e) {
+    res.status(500).json({ error: "Reverse geocoding failed" });
+  }
+});
+
 export default {
   path: "/api/modules/client",
   router
