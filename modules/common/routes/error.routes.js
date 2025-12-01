@@ -107,7 +107,7 @@ router.get("/reverse", async (req, res) => {
     // Only return the display_name to the client
     const display_name = response.data?.display_name || null;
 
-    res.json(response);
+    res.json(response.data);
   } catch (error) {
     console.error("Reverse geocoding error:", error.response || error.message || error);
     res.status(500).json({ error: "Reverse geocoding failed" });

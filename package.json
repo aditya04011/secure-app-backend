@@ -4,13 +4,13 @@
   "description": "",
   "main": "server.js",
   "type": "module",
- "scripts": {
-  "start": "env-cmd -f .env node server.js",
-  "start-hyd": "env-cmd -f .env.hyd node server.js",
-  "start-blr": "env-cmd -f .env.blr node server.js",
-  "start-blr-public": "env-cmd -f .env.blr.public node server.js",
-  "start-hyd-public": "env-cmd -f .env.hyd.public node server.js"
-},
+  "scripts": {
+    "start": "env-cmd -f .env nodemon server.js",
+    "start-hyd": "env-cmd -f .env.hyd nodemon server.js",
+    "start-blr": "env-cmd -f .env.blr nodemon server.js",
+    "start-blr-public": "env-cmd -f .env.blr.public nodemon server.js",
+    "start-hyd-public": "env-cmd -f .env.hyd.public nodemon server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
