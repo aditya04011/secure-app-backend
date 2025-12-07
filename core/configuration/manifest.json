@@ -1,7 +1,0 @@
-{
-  "name": "configuration",
-  "version": "1.0.0",
-  "description": "Modules Configuring Functionality",
-  "routes": ["/routes/configuration.routes.js"],
-  "dependencies": ["security"]
-}

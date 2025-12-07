@@ -1,19 +1,15 @@
 {
-  "name": "isc-unifiedplatform-backend",
+  "name": "secure-app-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "env-cmd -f .env nodemon server.js",
-    "start-hyd": "env-cmd -f .env.hyd nodemon server.js",
-    "start-blr": "env-cmd -f .env.blr nodemon server.js",
-    "start-blr-public": "env-cmd -f .env.blr.public nodemon server.js",
-    "start-hyd-public": "env-cmd -f .env.hyd.public nodemon server.js"
+    "start": "env-cmd -f .env nodemon server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "",
   "dependencies": {
     "@elastic/elasticsearch": "^8.17.0",
     "ajv": "^8.17.1",

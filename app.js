@@ -10,8 +10,6 @@ const app = express();
 
 
 // Check for HTTPS enabling or not
-const isHttpsEnabled = constants.isHttp2Enabled ? true : false;
-console.warn("isHttpsEnabled",isHttpsEnabled)
 /**
  * Initializes and configures the Express app, including:
  * 1. CORS configuration based on HTTPS.
@@ -21,14 +19,6 @@ console.warn("isHttpsEnabled",isHttpsEnabled)
  */
 // Configure CORS to properly handle preflight requests and credentials.
 // Note: Access-Control-Allow-Origin cannot be '*' when credentials are used.
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",")
-  : [
-      "http://localhost:3000",
-      "http://127.0.0.1:3000",
-      "http://localhost:4005",
-      "https://localhost:3000",
-    ];
 
 const corsOptions = {
   origin: function (origin, callback) {

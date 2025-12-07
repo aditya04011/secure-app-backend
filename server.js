@@ -60,10 +60,10 @@ const startServer = async () => {
       // Start regular HTTP server
       app.listen(PORT, "0.0.0.0", (err) => {
         if (err) {
-          logger.error("Failed to start ISC App", err);
+          logger.error("Failed to start Secure backend App", err);
           return;
         }
-        logger.info(`ISC App is running at http://0.0.0.0:${PORT}`);
+        logger.info(`Secure backend App is running at http://0.0.0.0:${PORT}`);
       });
     }
   } catch (e) {

@@ -1,7 +1,0 @@
-{
-  "name": "search",
-  "version": "1.0.0",
-  "description": "Handles elasticsearch functionality.",
-  "routes": ["/routes/search.routes.js"],
-  "dependencies": []
-}

@@ -1,5 +1,5 @@
 {
   "core": [],
   "modules": [],
-  "enabledModules": ["common", "loggers"] 
+  "enabledModules": ["common"] 
 }
